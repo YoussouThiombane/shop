@@ -1,0 +1,3 @@
+{% extends 'base.html' %}
+{% block title %}Commande confirmée — {{ site_settings.shop_name }}{% endblock %}
+{% block content %}<section class="section-space confirmation-section"><div class="container"><div class="confirmation-card"><div class="success-icon" aria-hidden="true">✓</div><p class="eyebrow">Merci pour votre confiance</p><h1>Votre commande est confirmée.</h1><p>Nous avons bien reçu votre commande et nous vous contacterons pour la suite.</p><div class="order-reference"><span>Référence</span><strong>{{ order.reference }}</strong></div><div class="confirmation-total">Total : <strong>{{ order.total|floatformat:0 }} FCFA</strong></div><a class="btn btn-gold" href="{% url 'core:home' %}">Retour à l’accueil</a></div></div></section>{% endblock %}

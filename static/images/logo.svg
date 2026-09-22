@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="348" height="104" viewBox="0 0 348 104" role="img" aria-labelledby="title desc">
+  <title id="title">Mbécté Trading</title><desc id="desc">Monogramme MT doré et nom Mbécté Trading en charbon</desc>
+  <rect x="2" y="2" width="94" height="94" rx="47" fill="#FAF8F3" stroke="#C69A45" stroke-width="3"/>
+  <path d="M22 69V34h8l19 22 19-22h8v35H66V49L49 69 32 49v20z" fill="#222326"/>
+  <path d="M42 27h36v7H64v35h-8V34H42z" fill="#C69A45"/>
+  <text x="112" y="51" fill="#222326" font-family="Georgia, serif" font-size="30" font-weight="700">Mbécté</text>
+  <text x="113" y="76" fill="#A7792F" font-family="Arial, sans-serif" font-size="15" letter-spacing="5">TRADING</text>
+</svg>

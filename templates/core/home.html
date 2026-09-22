@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}{{ site_settings.shop_name }} — Beauté & soin{% endblock %}
+{% block content %}
+<section class="hero-section">
+  <div class="container"><div class="row align-items-center gy-5">
+    <div class="col-lg-7"><p class="eyebrow">Beauté • Soin • Confiance</p><h1>Des rituels de soin choisis pour votre éclat.</h1><p class="hero-copy">{{ site_settings.presentation }}</p><div class="d-flex flex-wrap gap-3"><a class="btn btn-gold btn-lg" href="#produits">Découvrir les produits</a><span class="contact-pill">WhatsApp : <strong>{{ site_settings.whatsapp_number }}</strong></span></div></div>
+    <div class="col-lg-5"><div class="hero-mark" aria-hidden="true"><span>MT</span><small>Mbécté Trading</small></div></div>
+  </div></div>
+</section>
+<section class="trust-strip"><div class="container"><div class="row g-0 text-center"><div class="col-md-4 trust-item"><strong>Sélection attentive</strong><span>Des essentiels choisis avec exigence</span></div><div class="col-md-4 trust-item"><strong>Commande simple</strong><span>Sans compte et en quelques instants</span></div><div class="col-md-4 trust-item"><strong>Service humain</strong><span>Une boutique proche de vous</span></div></div></div></section>
+<section class="section-space" id="produits"><div class="container"><div class="section-heading"><div><p class="eyebrow">La sélection</p><h2>Nos produits</h2></div><p>Des soins pensés pour accompagner votre routine avec simplicité.</p></div>
+  {% if products %}<div class="row g-4">{% for product in products %}<div class="col-sm-6 col-lg-4 col-xl-3">{% include 'components/product_card.html' %}</div>{% endfor %}</div>{% else %}<div class="empty-state"><div class="empty-mark">MT</div><h3>La sélection arrive bientôt</h3><p>Revenez prochainement pour découvrir nos produits.</p></div>{% endif %}
+</div></section>
+{% endblock %}
