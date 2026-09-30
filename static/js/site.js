@@ -26,15 +26,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  const sidebar = document.querySelector("#dashboardSidebar");
-  const sidebarToggle = document.querySelector("[data-sidebar-toggle]");
-  if (sidebar && sidebarToggle) {
-    sidebarToggle.addEventListener("click", () => sidebar.classList.toggle("open"));
-    document.addEventListener("click", (event) => {
-      if (sidebar.classList.contains("open") && !sidebar.contains(event.target) && !sidebarToggle.contains(event.target)) sidebar.classList.remove("open");
-    });
-  }
-
   document.querySelectorAll(".thumbnail").forEach((thumbnail) => {
     thumbnail.addEventListener("click", () => {
       document.querySelectorAll(".thumbnail").forEach((item) => item.classList.remove("active"));

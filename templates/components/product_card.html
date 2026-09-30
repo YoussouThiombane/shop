@@ -1,19 +1,18 @@
-<article class="product-card h-100">
-  <a href="{{ product.get_absolute_url }}" class="product-image-wrap">
+<article class="product-card">
+  <a href="{{ product.get_absolute_url }}" class="product-image-wrap" aria-label="Voir {{ product.name }}">
+    {% if product.has_promotion %}<span class="promo-chip">Promo</span>{% endif %}
     {% if product.main_image %}<img src="{{ product.main_image.url }}" alt="{{ product.name }}" loading="lazy">{% else %}<span class="image-placeholder" aria-label="Image à venir">MT</span>{% endif %}
   </a>
   <div class="product-card-body">
     <h3><a href="{{ product.get_absolute_url }}">{{ product.name }}</a></h3>
-    <div class="price" aria-label="Prix">
-      {% if product.has_promotion %}<span class="old-price">{{ product.price|floatformat:0 }} FCFA</span><strong>{{ product.promotional_price|floatformat:0 }} FCFA</strong>{% else %}<strong>{{ product.price|floatformat:0 }} FCFA</strong>{% endif %}
+    <div class="product-card-footer">
+      <div class="price" aria-label="Prix">{% if product.has_promotion %}<strong>{{ product.promotional_price|floatformat:0 }} FCFA</strong><span class="old-price">{{ product.price|floatformat:0 }}</span>{% else %}<strong>{{ product.price|floatformat:0 }} FCFA</strong>{% endif %}</div>
+      <button class="quick-add" data-bs-toggle="modal" data-bs-target="#addCart{{ product.pk }}" aria-label="Ajouter {{ product.name }} au panier">Ajouter</button>
     </div>
-    <div class="d-grid gap-2 mt-auto pt-3">
-      <button class="btn btn-gold" data-bs-toggle="modal" data-bs-target="#addCart{{ product.pk }}">Ajouter au panier</button>
-      <a class="btn btn-outline-charcoal" href="{{ product.get_absolute_url }}">Voir le détail</a>
-    </div>
+    <a class="detail-link" href="{{ product.get_absolute_url }}">Voir le produit <span aria-hidden="true">→</span></a>
   </div>
 </article>
 <div class="modal fade" id="addCart{{ product.pk }}" tabindex="-1" aria-labelledby="addCartLabel{{ product.pk }}" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header"><h2 class="modal-title fs-5" id="addCartLabel{{ product.pk }}">Ajouter {{ product.name }}</h2><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button></div>
-  <form method="post" action="{% url 'orders:add' product.pk %}" data-disable-on-submit><div class="modal-body">{% csrf_token %}<input type="hidden" name="next" value="{{ request.get_full_path }}"><label class="form-label" for="quantity{{ product.pk }}">Quantité</label><input class="form-control" id="quantity{{ product.pk }}" name="quantity" type="number" min="1" max="99" value="1" required></div><div class="modal-footer"><button type="button" class="btn btn-light" data-bs-dismiss="modal">Annuler</button><button class="btn btn-gold" type="submit">Ajouter</button></div></form></div></div>
+  <div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header"><div><span class="modal-kicker">Ajouter au panier</span><h2 class="modal-title" id="addCartLabel{{ product.pk }}">{{ product.name }}</h2></div><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button></div>
+  <form method="post" action="{% url 'orders:add' product.pk %}" data-disable-on-submit><div class="modal-body">{% csrf_token %}<input type="hidden" name="next" value="{{ request.get_full_path }}"><label class="form-label" for="quantity{{ product.pk }}">Quantité</label><input class="form-control" id="quantity{{ product.pk }}" name="quantity" type="number" min="1" max="99" value="1" required></div><div class="modal-footer"><button type="button" class="btn btn-quiet" data-bs-dismiss="modal">Annuler</button><button class="btn btn-gold" type="submit">Ajouter au panier</button></div></form></div></div>
 </div>
